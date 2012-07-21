@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 source_text = <<EOF
 They came down the steps from Leahy's terrace prudently, Frauenzimmer: and down the shelving shore flabbily, their splayed feet sinking in the silted sand. Like me, like Algy, coming down to our mighty mother. Number one swung lourdily her midwife's bag, the other's gamp poked in the beach. From the liberties, out for the day. Mrs Florence MacCabe, relict of the late Patk MacCabe, deeply lamented, of Bride Street. One of her sisterhood lugged me squealing into life. Creation from nothing. What has she in the bag? A misbirth with a trailing navelcord, hushed in ruddy wool. The cords of all link back, strandentwining cable of all flesh. That is why mystic monks. Will you be as gods? Gaze in your omphalos. Hello! Kinch here. Put me on to Edenville. Aleph, alpha: nought, nought, one.
 Spouse and helpmate of Adam Kadmon: Heva, naked Eve. She had no navel. Gaze. Belly without blemish, bulging big, a buckler of taut vellum, no, whiteheaped corn, orient and immortal, standing from everlasting to everlasting. Womb of sin.
@@ -18,17 +19,103 @@ source_text_words.each_with_index do |word, index| # Iterate over each word in t
     word_pairs_and_probabilities[hash_key] << hash_value # if it does, bump that word pair's value (next word) into the array,
   else
     word_pairs_and_probabilities[hash_key] = [hash_value] # if it doesn't, assign that word pair's value
+=======
+class LitBot
+  def eat_file(file_name)
+    file = File.open(file_name)
+    @source_text = file.read
+    file.close
+  end
+
+  def speak_first_10_words
+    puts @source_text.split(' ').first(10)
+  end
+
+  def digest_file
+    source_text_words = @source_text.split(' ')
+    word_pairs_and_probabilities = {}
+
+    source_text_words.each_with_index do |word, index|
+      hash_key = "#{word} #{source_text_words[index + 1]}"
+      hash_value = source_text_words[index + 2]
+      if word_pairs_and_probabilities[hash_key]
+        word_pairs_and_probabilities[hash_key] << hash_value
+      else
+        word_pairs_and_probabilities[hash_key] = [hash_value]
+      end
+    end
+  end
+
+  def speak
+    puts word_pairs_and_probabilities.first
+>>>>>>> upstream/master
   end
   
   
  
 end
 
+<<<<<<< HEAD
 #puts word_pairs_and_probabilities
+=======
+bender = LitBot.new
+bender.eat_file("huckle.txt")
+# bender.speak_first_10_words # an example call
+bender.digest_file
+bender.speak
+
+ulysses_bot = LitBot.new
+ulysses_bot.eat_file("ulysses.txt")
+# ulysses.speak_first_10_words # an example call
+ulysses_bot.digest_file
+ulysses_bot.speak
+
+# BONUS HW
+hybrid_bot = ulysses_bot + bender
+hybrid_bot.speak
+
+# ulysses = File.open("ulysses.txt")
+# source_text = ulysses.read
+# ulysses.close
+
+# source_text_words = source_text.split(' ')
+# word_pairs_and_probabilities = {}
+
+# source_text_words.each_with_index do |word, index|
+  # hash_key = "#{word} #{source_text_words[index + 1]}"
+  # hash_value = source_text_words[index + 2]
+  # if word_pairs_and_probabilities[hash_key]
+    # word_pairs_and_probabilities[hash_key] << hash_value
+  # else
+    # word_pairs_and_probabilities[hash_key] = [hash_value]
+  # end
+# end
+
+# # puts word_pairs_and_probabilities
+# output_text = ['They', 'came']
+
+# story = 0
+# while story < 35 do
+  # word_pair = output_text.last(2).join(' ')
+  # next_word = word_pairs_and_probabilities[word_pair].sample unless word_pairs_and_probabilities[word_pair].nil?
+  # output_text << next_word
+
+  # if next_word && (next_word.include?(".") || next_word.include?("?"))
+    # story += 1
+  # end
+# end
+# puts output_text.join(' ')
+
+
+
+
+
+>>>>>>> upstream/master
 
 #probable_following_words = word_pairs_and_probabilities
 #puts probable_following_words.sample
 
+<<<<<<< HEAD
 # simple_hash = {}
 # simple_hash["they came"] =["down"]
 
@@ -46,3 +133,5 @@ while story < 35 do
 	
 end
 puts output_text.join(" ")
+=======
+>>>>>>> upstream/master
